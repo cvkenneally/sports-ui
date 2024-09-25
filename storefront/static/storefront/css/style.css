@@ -7,24 +7,102 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Sticky Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;  /* Dark background for the nav */
+    color: white;
+    padding: 10px 20px;
+    position: sticky;  /* Stick to the top */
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.menu-items {
+    display: flex;
+    margin-right: 20px;
+}
+
+.menu-item {
+    background-color: #555;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu-item:hover {
+    background-color: #777;
+}
+
+.menu-item.active {
+    background-color: #007AFF;
+}
+
+/* Date Selector Styling */
+.date-selector input[type="date"] {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.date-selector input[type="date"]:hover {
+    border-color: #aaa;
+    background-color: #fff;
+}
+
+.date-selector input[type="date"]:focus {
+    border-color: #007AFF;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Main Content Styling */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 60px;  /* Space for the sticky nav */
     padding: 20px;
 }
 
-h1 {
-    font-size: 48px;
-    color: #333;
-    text-align: center;
-    margin-top: 50px;
+@media (min-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: center;
-    margin: 10px 0;
+@media (min-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 /* Content Block */
@@ -69,28 +147,8 @@ p {
     left: 50%;
     transform: translateX(-50%);
     font-size: 18px;
-    color: #ff3b30;
+    color: #007AFF;
     font-weight: bold;
-}
-
-/* Grid Layout for Content */
-.content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-@media (min-width: 768px) {
-    .content-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (min-width: 1024px) {
-    .content-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
 }
 
 /* Modal styling */
@@ -124,85 +182,7 @@ p {
     right: 20px;
     font-size: 28px;
     cursor: pointer;
-    color: #ff3b30;
-}
-
-/* Menu Bar Styling */
-.menu-bar {
-    display: flex;
-    justify-content: space-between;  /* Aligns sports menu to the left, date picker to the right */
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.menu-items {
-    display: flex;
-}
-
-.menu-item {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 0 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.menu-item:hover {
-    background-color: #555;
-}
-
-.menu-item.active {
-    background-color: #ff3b30;
-}
-
-/* Date Selector Styling */
-.date-selector {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.date-selector input[type="date"] {
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #333;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-.date-selector input[type="date"]:hover {
-    border-color: #aaa;
-    background-color: #fff;
-}
-
-.date-selector input[type="date"]:focus {
-    border-color: #ff3b30;
-    background-color: #fff;
-    color: #333;
-}
-
-.date-selector input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #333;
-    cursor: pointer;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .menu-bar {
-        flex-direction: column;  /* Stack the menu and date picker vertically on smaller screens */
-        align-items: flex-start;
-    }
-
-    .date-selector {
-        margin-top: 10px;
-        width: 100%;  /* Make the date picker take the full width on smaller screens */
-    }
+    color: #007AFF;
 }
 
 /* Icon styling */
@@ -211,31 +191,39 @@ p {
     top: 10px;       /* Adjust the value if needed */
     left: 10px;      /* Adjust the value if needed */
     font-size: 24px; /* You can adjust this size */
-    color: #ff3b30;  /* Ensure the color is set */
+    color: #007AFF;  /* Ensure the color is set */
     z-index: 10;     /* Ensure it sits above other content */
 }
-
 
 .sport-icon i {
     display: inline-block;
 }
 
-/* Mobile and tablet layout adjustments */
+/* Hover effects for score blocks */
+.content-block {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-block:hover {
+    transform: scale(1.05);  /* Slightly enlarge the block on hover */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);  /* Add a more pronounced shadow on hover */
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    /* Adjust the content grid to a single column layout for smaller screens */
     .content-grid {
         grid-template-columns: 1fr;
         gap: 20px;  /* Reduce the gap between blocks for mobile */
     }
 
-    /* Adjust the menu bar layout for mobile */
-    .menu-bar {
-        flex-direction: column;  /* Stack buttons and date picker vertically */
-        align-items: stretch;    /* Make buttons and date picker take full width */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .menu-items {
-        flex-direction: column;  /* Stack buttons vertically */
+        flex-direction: column;
+        margin-top: 10px;
     }
 
     .menu-item {
@@ -245,10 +233,9 @@ p {
         font-size: 18px;          /* Increase font size for readability */
     }
 
-    /* Adjust the date picker width */
     .date-selector {
         width: 100%;
-        margin-top: 10px;  /* Add some spacing between the buttons and date selector */
+        margin-top: 10px;  /* Add spacing between the buttons and date selector */
     }
 
     .date-selector input[type="date"] {
@@ -257,32 +244,67 @@ p {
     }
 }
 
-/* Tablet layout adjustment */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .content-grid {
-        grid-template-columns: 1fr 1fr;  /* Two-column layout for tablet screens */
-    }
-
-    .menu-item {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .date-selector input[type="date"] {
-        padding: 10px;
-    }
+.navbar.dark-mode {
+    background-color: #222;
+    color: white;
 }
 
-/* Hover effects for score blocks */
-/* Hover effects for score blocks */
-.content-block {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions for transform and shadow */
-    -webkit-transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Chrome/Safari */
+.content-block.dark-mode {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
 }
 
-.content-block:hover {
-    transform: scale(1.05);  /* Slightly enlarge the block on hover */
-    -webkit-transform: scale(1.05);  /* Chrome/Safari */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);  /* Add a more pronounced shadow on hover */
-    -webkit-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);  /* Chrome/Safari */
+.menu-item.dark-mode {
+    background-color: #555;
+}
+
+.menu-item.dark-mode.active {
+    background-color: #ff6b6b;
+}
+
+/* Dark Mode Toggle Styling */
+.dark-mode-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-left: 20px;
+}
+
+.toggle-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    background-color: #007AFF;
+}
+
+.toggle-checkbox:checked + .toggle-label::before {
+    transform: translateX(26px);
 }

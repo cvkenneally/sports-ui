@@ -59,11 +59,17 @@ function updateScores(scores) {
             contentGrid.innerHTML += gameBlock;
         });
 
+        // Reapply dark mode if it's active
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        if (isDarkMode) {
+            updateElementsForDarkMode(true);
+        }
+
         // Attach event listener to each score block after it's created
-        document.querySelectorAll('.score-block').forEach(function(block, index) {
+        document.querySelectorAll('.score-block').forEach(function(block) {
             block.addEventListener('click', function() {
-                // Pass the relevant game data to the showDetails function
-                showDetails(scores[index]);  // Pass the entire game object
+                var gameId = this.getAttribute('data-gameid');
+                showDetails(gameId);
             });
         });
     }
