@@ -1,0 +1,79 @@
+<!-- storefront/templates/storefront/scores.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Scores</title>
+    <link rel="stylesheet" href="{% static 'storefront/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Live Sports Scores</h1>
+
+        <!-- Menu Bar for Sports and Date Selector -->
+        <div class="menu-bar">
+            <div class="menu-items">
+                <button class="menu-item" onclick="filterGames('all')">All</button>
+                <button class="menu-item" onclick="filterGames('basketball')">Basketball</button>
+                <button class="menu-item" onclick="filterGames('football')">Football</button>
+                <button class="menu-item" onclick="filterGames('soccer')">Soccer</button>
+            </div>
+            
+            <!-- Date Selector -->
+            <div class="date-selector">
+                <input type="date" id="score-date" name="score-date" onchange="filterByDate()">
+            </div>
+        </div>
+
+        <div class="content-grid">
+            {% for score in scores %}
+            <div class="content-block score-block" data-sport="{{ score.sport }}" data-gameid="{{ forloop.counter }}" onclick="showDetails('{{ forloop.counter }}')">
+                    <!-- Sport Icon -->
+                    <div class="sport-icon">
+                        {% if score.sport == "basketball" %}
+                            <i class="fas fa-basketball-ball"></i>
+                        {% elif score.sport == "football" %}
+                            <i class="fas fa-football-ball"></i>
+                        {% elif score.sport == "soccer" %}
+                            <i class="fas fa-futbol"></i>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Game Time -->
+                    <div class="time-remaining">{{ score.time_remaining }}</div>
+        
+                    <!-- Score and Teams -->
+                    <div class="score-container">
+                        <div class="team">
+                            <div class="score">{{ score.team1_score }}</div>
+                            <div class="team-name">{{ score.team1 }}</div>
+                        </div>
+                        <div class="team">
+                            <div class="score">{{ score.team2_score }}</div>
+                            <div class="team-name">{{ score.team2 }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Modal Structure for Detailed Stats -->
+    <div id="details-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Game Details</h2>
+            <div id="modal-details-content">
+                <!-- Dynamic details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'storefront/js/scores.js' %}"></script>
+</body>
+</html>

@@ -14,6 +14,8 @@ venv/
 db.sqlite3
 staticfiles/
 media/
+settings.py
+bkp_settings.py
 
 # Miscellaneous
 *.log
